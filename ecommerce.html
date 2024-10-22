@@ -1,0 +1,72 @@
+<!-- Part 9 -->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เพิ่มสินค้าลงในตาราง</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>New product</h1>
+    <form id="productForm">
+        <label for="productName">Name :</label>
+        <input type="text" id="productName" required>
+        <label for="productPrice">Price :</label>
+        <input type="number" id="productPrice" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <h2>Product table</h2>
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- รายการสินค้าจะถูกเพิ่มที่นี่ -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#productForm').on('submit', function(event) {
+                event.preventDefault(); // ป้องกันการรีเฟรชหน้าเมื่อฟอร์มถูกส่ง
+
+                // ดึงค่าจากฟอร์ม
+                const productName = $('#productName').val();
+                const productPrice = $('#productPrice').val();
+
+                // สร้างแถวใหม่ในตาราง
+                const newRow = `<tr>
+                                    <td>${productName}</td>
+                                    <td>${productPrice}</td>
+                                </tr>`;
+                
+                // เพิ่มแถวใหม่ใน tbody ของตาราง
+                $('#productTable tbody').append(newRow);
+
+                // แสดงข้อความแจ้งเตือน
+                alert(`Add to new product: ${productName}, price: ${productPrice} baht`);
+
+                // เคลียร์ฟิลด์ input
+                $('#productName').val('');
+                $('#productPrice').val('');
+            });
+        });
+    </script>
+</body>
+</html>

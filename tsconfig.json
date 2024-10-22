@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "target": "es2015",           // Target ES2015 or later
+      "lib": ["es2015", "dom"],     // Include ES2015 in the lib options
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true
+    }
+  }
+  
